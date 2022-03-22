@@ -32,7 +32,7 @@ function App(){
         // // Sort
         _items = funcOrderBy(_items, [orderBy], [orderDir]);
         return _items
-    }, [items, strSearch])
+    }, [items, strSearch, orderBy, orderDir])
 
     function handleSubmit(item){
         let id      = null;
