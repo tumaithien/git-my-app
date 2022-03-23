@@ -1,15 +1,16 @@
 import React, {} from 'react';
 import { useDispatch } from 'react-redux';
-import { actOpenForm } from '../action';
+import { actDelete, actItemSelected, actOpenForm } from '../action';
 
 function Item (props) {
     const dispatch = useDispatch()
     function handleEdit(item){
        dispatch(actOpenForm())
+       dispatch(actItemSelected(item))
     }
 
     function handleDelete(id){
-        props.onClickDelete(id);
+        dispatch(actDelete(id));
     }
     function showElementLevel(level){
         let elmLevel = <span className="label label-default">Small</span>;

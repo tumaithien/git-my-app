@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { actToggleForm } from '../action';
+import { actToggleForm, actUnSelectItem } from '../action';
 
 
 const defaultBtn = ['btn', 'btn-block']
@@ -10,6 +10,7 @@ function ToggleForm() {
     const dispatch = useDispatch()
     const toggleForm = () => {
         dispatch(actToggleForm())
+        dispatch(actUnSelectItem())
     }
         const classBtn = isShowForm ? 
         [...defaultBtn, 'btn-success'] : 

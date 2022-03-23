@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
 import {useSelector} from 'react-redux'
 import Item from './Item';
-import {filter, includes } from 'lodash';
+import {filter, includes, orderBy as funcOrderBy } from 'lodash';
 function List () {
     const items   = useSelector(state => state.items);
     const strSearch = useSelector(state => state.search);
+    const sort = useSelector(state => state.sort);
+    const {orderBy, orderDir} = sort
     // // Search
     const itemsAfterFilter = useMemo(() => {
         let _items = filter(items || [], (item) => {
@@ -12,10 +14,13 @@ function List () {
         });
         return _items
     },[items, strSearch]);
-    console.log(items)
+    const itemsAfterSort = useMemo(() => {
+        let _items = funcOrderBy(itemsAfterFilter, [orderBy], [orderDir]);
+        return _items
+    }, [itemsAfterFilter, orderBy, orderDir])
     let elmItems  = <tr><td colSpan={4}>Không có công việc</td></tr>
-    if(itemsAfterFilter.length > 0){
-        elmItems = itemsAfterFilter.map((item, index) => {
+    if(itemsAfterSort.length > 0){
+        elmItems = itemsAfterSort.map((item, index) => {
             return (
                 <Item 
                     key={index} 

@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { actCLoseForm } from '../action';
+import { actCLoseForm, actSubmit, actUnSelectItem } from '../action';
 
-function Form(props) {
+function Form() {
     const [newTaskItems, setNewTaskItems] = useState({
         task_id: '',
         task_name: '',
         task_level: 0
     })
     const isShowForm = useSelector(state => state.isShowForm)
+    const itemSelected = useSelector(state => state.itemSelected)
+    
     const dispatch = useDispatch()
     useEffect(() => {
-        const item = props.itemSelected;
+        const item = itemSelected;
         if(item){
             setNewTaskItems({
                 task_id: item.id,
@@ -19,7 +21,7 @@ function Form(props) {
                 task_level: item.level
             })
         }
-    },[props.itemSelected])
+    },[itemSelected])
 
     function handleChange(event) {
         const target = event.target;    // input selectbox
@@ -40,12 +42,13 @@ function Form(props) {
             id: newTaskItems.task_id,
             level: newTaskItems.task_level,
         };
-
-        props.onClickSubmit(item);
+        dispatch(actSubmit(item))
+        dispatch(actCLoseForm())
     }
 
     function handleCancel(){
         dispatch(actCLoseForm())
+        dispatch(actUnSelectItem())
 
     }
     if(!isShowForm) return null

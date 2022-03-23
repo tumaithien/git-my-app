@@ -29,3 +29,29 @@ export const actSearch = (search) => {
         search
     }
 }
+
+export const actDelete = (id) => {
+    return {
+        type: types.ACT_DELETE_ITEM,
+        id
+    }
+}
+
+export const actSubmit = (item) =>{
+    return {
+        type: types.ACT_HANDLE_SUBMIT,
+        item
+    }
+}
+export const actItemSelected = (item) => {
+    return {
+        type: types.ACT_ITEM_SELECTED,
+        item
+    }
+}
+
+export const actUnSelectItem = () => {
+    return {
+        type: types.ACT_UNSELECT_ITEM
+    }
+}
