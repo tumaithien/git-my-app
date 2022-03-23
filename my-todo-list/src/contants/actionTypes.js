@@ -1,0 +1,5 @@
+export const ACT_ADD_TODO = 'ACT_ADD_TODO'
+export const CLOSE_FORM = 'CLOSE_FORM'
+export const OPEN_FORM = 'OPEN_FORM'
+export const TOGGLE_FORM = 'TOGGLE_FORM'
+export const ACT_SORT = 'ACT_SORT'

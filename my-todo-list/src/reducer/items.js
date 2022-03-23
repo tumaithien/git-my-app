@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid'
 
-let items = [
+let defaultState = [
     {
         id      : uuidv4(),
         name    : "Coding papmall",
@@ -22,6 +22,16 @@ let items = [
         name    : "Test",
         level   : 0 // 0 Small, 1 Medium, 2 High
     }
-];
+]
 
-export default items;
+
+const items = (state = defaultState, action) => {
+    switch (action.type) {
+        
+        default: 
+        return state;
+    }
+
+}
+
+export default items

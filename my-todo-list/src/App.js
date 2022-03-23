@@ -5,7 +5,7 @@ import Form from './components/Form';
 import List from './components/List';
 import {filter, includes, orderBy as funcOrderBy, remove, reject } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import store from './redux'
+import store from './store';
 // import tasks from './mocks/tasks';
 
 
