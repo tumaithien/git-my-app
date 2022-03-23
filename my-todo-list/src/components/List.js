@@ -1,8 +1,22 @@
-import React, { } from 'react';
+import React from 'react';
+import {useSelector} from 'react-redux'
 import Item from './Item';
 
 function List (props) {
-    const items   = props.items;
+    const items   = useSelector(state => state.items);
+    let elmItems  = <tr><td colSpan={4}>Không có công việc</td></tr>
+    if(items.length > 0){
+        elmItems = items.map((item, index) => {
+            return (
+                <Item 
+                    onClickDelete={props.onClickDelete} 
+                    onClickEdit={props.onClickEdit} 
+                    key={index} 
+                    item={item} 
+                    index={index} />
+            );
+        })
+    }
         return (
             <div className="panel panel-success">
                 <div className="panel-heading">List Task</div>
@@ -17,16 +31,7 @@ function List (props) {
                     </thead>
                     <tbody>
                         {
-                            items.map((item, index) => {
-                                return (
-                                    <Item 
-                                        onClickDelete={props.onClickDelete} 
-                                        onClickEdit={props.onClickEdit} 
-                                        key={index} 
-                                        item={item} 
-                                        index={index} />
-                                );
-                            })
+                            elmItems
                         }
 
                     </tbody>

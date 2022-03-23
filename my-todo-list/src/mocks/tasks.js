@@ -3,23 +3,23 @@ import { v4 as uuidv4 } from 'uuid';
 let items = [
     {
         id      : uuidv4(),
-        name    : "Abc Lorem ipsum sit amet, consectetur adipisicing elit.",
+        name    : "Coding papmall",
         level   : 0 // 0 Small, 1 Medium, 2 High
     },
     {
         id      : uuidv4(),
-        name    : "Def Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+        name    : "Task travelner",
         level   : 1 // 0 Small, 1 Medium, 2 High
     },
     {
         id      : uuidv4(),
-        name    : "Ghj Lorem ipsum sit amet, consectetur adipisicing elit.",
+        name    : "Work from home",
         level   : 2 // 0 Small, 1 Medium, 2 High
     }
     ,
     {
         id      : uuidv4(),
-        name    : "123 Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+        name    : "Test",
         level   : 0 // 0 Small, 1 Medium, 2 High
     }
 ];

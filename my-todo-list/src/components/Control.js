@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actOpenForm, actToggleForm } from '../action';
 import Search from './Search';
 import Sort from './Sort';
 
@@ -6,14 +8,15 @@ import Sort from './Sort';
 const defaultBtn = ['btn', 'btn-block']
 console.log(defaultBtn)
 function Control(props) {
-
+    const isShowForm = useSelector(state => state.isShowForm)
+    const dispatch = useDispatch()
     function handleAdd(){
         props.onClickAdd();
+        dispatch(actToggleForm())
     }
-
     let {orderBy, orderDir}  = props;
 
-        const classBtn = props.isShowForm ? 
+        const classBtn = isShowForm ? 
         [...defaultBtn, 'btn-success'] : 
         [...defaultBtn, 'btn-info']
         return (
@@ -35,7 +38,7 @@ function Control(props) {
                 <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                     { <button onClick={handleAdd} type="button" className={classBtn.join(' ')}>
                         {
-                            props.isShowForm ? 'Close Form' : 'Add Tasks'
+                            isShowForm ? 'Close Form' : 'Add Tasks'
                         }
                     </button> }
                 </div>
