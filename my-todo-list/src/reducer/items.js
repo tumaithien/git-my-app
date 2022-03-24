@@ -1,5 +1,4 @@
 import {v4 as uuidv4} from 'uuid'
-
 let defaultState = [
     {
         id      : uuidv4(),
@@ -23,12 +22,13 @@ let defaultState = [
         level   : 0 // 0 Small, 1 Medium, 2 High
     }
 ]
+let initItemsFromStorage = JSON.parse(localStorage.getItem('task'));
+defaultState = (initItemsFromStorage !== null && initItemsFromStorage.length > 0) ? initItemsFromStorage : defaultState
 
 
 const items = (state = defaultState, action) => {
     switch (action.type) {
-        
-        default: 
+        default:
         return state;
     }
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actCLoseForm } from '../action';
 
 function Form(props) {
     const [newTaskItems, setNewTaskItems] = useState({
@@ -6,7 +8,8 @@ function Form(props) {
         task_name: '',
         task_level: 0
     })
-
+    const isShowForm = useSelector(state => state.isShowForm)
+    const dispatch = useDispatch()
     useEffect(() => {
         const item = props.itemSelected;
         if(item){
@@ -42,9 +45,10 @@ function Form(props) {
     }
 
     function handleCancel(){
-        props.onClickCancel();
-    }
+        dispatch(actCLoseForm())
 
+    }
+    if(!isShowForm) return null
     return (
         <div className="row">
             <div className="col-md-offset-7 col-md-5">

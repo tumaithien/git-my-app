@@ -23,3 +23,9 @@ export const actSort =(orderBy, orderDir) => {
         orderDir
     }
 }
+export const actSearch = (search) => {
+    return {
+        type: types.ACT_CHANGE_SEARCH,
+        search
+    }
+}

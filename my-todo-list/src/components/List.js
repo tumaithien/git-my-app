@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {useSelector} from 'react-redux'
 import Item from './Item';
-
-function List (props) {
+import {filter, includes } from 'lodash';
+function List () {
     const items   = useSelector(state => state.items);
-    let elmItems
-    if(items.length > 0){
-        elmItems = items.map((item, index) => {
+    const strSearch = useSelector(state => state.search);
+    // // Search
+    const itemsAfterFilter = useMemo(() => {
+        let _items = filter(items || [], (item) => {
+            return includes(item.name.toLowerCase(), strSearch.toLowerCase());
+        });
+        return _items
+    },[items, strSearch]);
+    console.log(items)
+    let elmItems  = <tr><td colSpan={4}>Không có công việc</td></tr>
+    if(itemsAfterFilter.length > 0){
+        elmItems = itemsAfterFilter.map((item, index) => {
             return (
                 <Item 
-                    onClickDelete={props.onClickDelete} 
-                    onClickEdit={props.onClickEdit} 
                     key={index} 
                     item={item} 
                     index={index} />

@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actSearch } from '../action';
 
-function Search (props) {
-    const [strSearch, setStrSearch] = useState('')
-
-    function handleSearch(){
-        props.onClickGo(strSearch);
-    }
+function Search () {
+    const strSearch = useSelector(state => state.search)
+    const dispatch = useDispatch()
 
     function handleClear(){
-        setStrSearch('')
-        props.onClickGo('');
+        dispatch(actSearch(''))
     }
 
     function handleChange(event){
-        setStrSearch(event.target.value)
+        dispatch(actSearch(event.target.value))
     }
 
     return (
@@ -21,7 +19,6 @@ function Search (props) {
             <div className="input-group">
                 <input value={strSearch} onChange={handleChange} type="text" className="form-control" placeholder="Search for..." />
                 <span className="input-group-btn">
-                    <button onClick={handleSearch} className="btn btn-info" type="button">Go!</button>
                     <button onClick={handleClear} className="btn btn-warning" type="button">Clear</button>
                 </span>
             </div>

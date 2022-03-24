@@ -1,8 +1,11 @@
 import React, {} from 'react';
+import { useDispatch } from 'react-redux';
+import { actOpenForm } from '../action';
 
 function Item (props) {
+    const dispatch = useDispatch()
     function handleEdit(item){
-       props.onClickEdit(item);
+       dispatch(actOpenForm())
     }
 
     function handleDelete(id){
